@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="12dp"
+    android:layout_marginBottom="8dp"
+    android:background="@drawable/item_borda">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/tvDataAberturaCaixa"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Aberto em: DD/MM/AAAA HH:MM"
+            android:textSize="14sp"
+            android:textColor="@android:color/darker_gray"
+            android:layout_alignParentStart="true"/>
+        <TextView
+            android:id="@+id/tvStatusCaixa"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Aberto"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp"
+            android:background="@drawable/item_borda_tipo"
+            android:textColor="@color/purple_700"
+            android:layout_alignParentEnd="true"/>
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/tvUsuarioCaixa"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Usuário: email@exemplo.com"
+        android:textSize="14sp"
+        android:layout_marginTop="4dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="8dp">
+        <TextView
+            android:id="@+id/tvValorInicialCaixa"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Inicial: R$ 0,00"
+            android:textSize="16sp"/>
+        <TextView
+            android:id="@+id/tvValorVendidoCaixa"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:text="Vendido: R$ 0,00"
+            android:textSize="16sp"/>
+        <TextView
+            android:id="@+id/tvValorFinalCaixa"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="end"
+            android:text="Final: R$ 0,00"
+            android:textSize="16sp"
+            android:textStyle="bold"/>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tvDataFechamentoCaixa"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Fechado em: DD/MM/AAAA HH:MM"
+        android:textSize="14sp"
+        android:textColor="@android:color/darker_gray"
+        android:gravity="end"
+        android:layout_marginTop="4dp"
+        android:visibility="gone"/>
+
+</LinearLayout>

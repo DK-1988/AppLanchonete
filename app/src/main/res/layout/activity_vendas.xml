@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:baselineAligned="false"
+    tools:context=".VendasActivity">
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:padding="8dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Setores"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="8dp"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvSetorFiltro"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="8dp"
+            tools:listitem="@layout/item_setor_filtro"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Produtos Disponíveis"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="8dp"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvProdutosDisponiveis"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            tools:listitem="@layout/item_produto_venda" />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="1dp"
+        android:layout_height="match_parent"
+        android:background="#CCCCCC" />
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:padding="8dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Carrinho"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="8dp"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvCarrinho"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            tools:listitem="@layout/item_carrinho_venda" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cliente:"
+            android:textSize="14sp"
+            android:layout_marginTop="16dp"/>
+        <TextView
+            android:id="@+id/tvClienteSelecionado"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Cliente Padrão"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:padding="8dp"
+            android:background="#EEEEEE"/>
+        <Button
+            android:id="@+id/btnSelecionarCliente"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Selecionar Cliente"
+            style="?android:attr/buttonBarButtonStyle" />
+
+        <TextView
+            android:id="@+id/tvTotalVenda"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Total: R$ 0,00"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:gravity="end"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"/>
+
+        <Button
+            android:id="@+id/btnFinalizarVenda"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Finalizar Venda"
+            android:padding="12dp"
+            android:textSize="18sp"/>
+        <Button
+            android:id="@+id/btnFecharCaixa"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Fechar Caixa"
+            android:layout_marginTop="8dp"
+            style="?android:attr/buttonBarButtonStyle"
+            android:textColor="@android:color/holo_red_dark"/>
+
+    </LinearLayout>
+
+</LinearLayout>

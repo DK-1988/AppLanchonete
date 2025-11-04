@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.BLUETOOTH_SCAN" />
+    <uses-permission android:name="android.permission.BLUETOOTH_CONNECT" />
+
+    <uses-feature
+        android:name="android.hardware.bluetooth"
+        android:required="true" />
+
+    <application
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.AppLanchonete">
+        <activity
+            android:name=".BottomSheetProdutoDetalhe"
+            android:exported="false" />
+        <activity
+            android:name=".PagamentoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AdicionarModificadorActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ModificadoresActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SelecionarClienteActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ImpressaoConfigActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ConfiguracoesMenuActivity"
+            android:exported="false" />
+        <activity
+            android:name=".EmpresaActivity"
+            android:exported="false" />
+        <activity
+            android:name=".RegistrarUsuarioActivity"
+            android:exported="false" />
+        <activity
+            android:name=".LoginActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".AdicionarSetorActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SetoresActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AdicionarClienteActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ClientesActivity"
+            android:exported="false" />
+        <activity
+            android:name=".CadastroMenuActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AdicionarProdutoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".RelatoriosActivity"
+            android:exported="false" />
+        <activity
+            android:name=".VendasActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ProdutosActivity"
+            android:exported="false" />
+        <activity
+            android:name=".MainActivity"
+            android:exported="false" />
+    </application>
+
+</manifest>

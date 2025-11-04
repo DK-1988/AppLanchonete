@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AdicionarModificadorActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <TextView
+            android:id="@+id/tvTituloFormularioModificador"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Novo Grupo de Modificadores"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="24dp"/>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etNomeGrupoModificador"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Nome do Grupo (ex: Tamanhos)"
+                android:inputType="textCapWords"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tipo de Seleção"
+            android:textSize="12sp"/>
+        <RadioGroup
+            android:id="@+id/rgTipoSelecaoModificador"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="16dp">
+            <RadioButton
+                android:id="@+id/rbSelecaoUnica"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Seleção Única"/>
+            <RadioButton
+                android:id="@+id/rbSelecaoMultipla"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Seleção Múltipla"
+                android:layout_marginStart="16dp"
+                android:checked="true"/>
+        </RadioGroup>
+
+        <CheckBox
+            android:id="@+id/cbModificadorObrigatorio"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Seleção Obrigatória"
+            android:layout_marginBottom="24dp"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#CCCCCC"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Opções do Grupo"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="8dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="bottom"
+            android:layout_marginBottom="16dp">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:layout_marginEnd="8dp"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etNomeOpcao"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Nome da Opção (ex: +Bacon)"
+                    android:inputType="textCapWords"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginEnd="8dp"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etPrecoOpcao"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Preço (ex: 2.50)"
+                    android:inputType="numberDecimal"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <Button
+                android:id="@+id/btnAdicionarOpcao"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Add"/>
+        </LinearLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvOpcoesModificador"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="100dp"
+            android:nestedScrollingEnabled="false"
+            android:layout_marginBottom="24dp"
+            tools:listitem="@layout/item_modificador_opcao"/> <Button
+        android:id="@+id/btnSalvarModificadorGrupo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Salvar Grupo de Modificadores"
+        android:padding="12dp"
+        android:textSize="18sp"/>
+
+    </LinearLayout>
+</ScrollView>

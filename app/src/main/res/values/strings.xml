@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">AppLanchonete</string>
+
+
+    <string-array name="formas_pagamento_array">
+        <item>Dinheiro</item>
+        <item>PIX</item>
+        <item>Cartão de Crédito</item>
+        <item>Cartão de Débito</item>
+    </string-array>
+</resources>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="16dp"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Lanchonete App"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="48dp"/>
+
+    <Button
+    android:id="@+id/btnCadastro"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="Cadastro"
+    android:layout_marginBottom="16dp"
+    android:textSize="18sp"/>
+
+    <Button
+        android:id="@+id/btnPontoDeVendas"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Ponto de Vendas"
+        android:layout_marginBottom="16dp"
+        android:textSize="18sp"/>
+
+    <Button
+        android:id="@+id/btnRelatorios"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Relatórios"
+        android:textSize="18sp"
+        android:layout_marginBottom="16dp"/>
+
+    <Button
+    android:id="@+id/btnConfiguracoes"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="Configurações"
+    android:textSize="18sp"/>
+
+</LinearLayout>

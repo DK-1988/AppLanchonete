@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/bs_root"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@android:color/transparent"
+    tools:context=".BottomSheetProdutoDetalhe">
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/bs_card"
+        style="@style/Widget.MaterialComponents.CardView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="12dp"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="8dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <TextView
+                android:id="@+id/bs_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Adicionar Item"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+                android:textStyle="bold"
+                android:paddingBottom="8dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:paddingBottom="8dp">
+
+                <TextView
+                    android:id="@+id/bs_tvNomeProduto"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Produto Exemplo"
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/bs_tvPrecoProduto"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="R$ 0,00"
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/bs_lbl_ingredientes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Ingredientes"
+                android:textStyle="bold"
+                android:paddingTop="6dp"
+                android:paddingBottom="6dp" />
+
+            <com.google.android.material.chip.ChipGroup
+                android:id="@+id/cgIngredientes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:singleSelection="false"
+                app:singleLine="false"
+                app:chipSpacing="8dp"
+                android:paddingBottom="8dp" />
+
+            <TextView
+                android:id="@+id/bs_lbl_molhos"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Molhos"
+                android:textStyle="bold"
+                android:paddingTop="6dp"
+                android:paddingBottom="6dp" />
+
+            <com.google.android.material.chip.ChipGroup
+                android:id="@+id/cgMolhos"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:singleSelection="false"
+                app:singleLine="false"
+                app:chipSpacing="8dp"
+                android:paddingBottom="8dp" />
+
+            <TextView
+                android:id="@+id/bs_lbl_extras"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Extras"
+                android:textStyle="bold"
+                android:paddingTop="6dp"
+                android:paddingBottom="6dp" />
+
+            <com.google.android.material.chip.ChipGroup
+                android:id="@+id/cgExtras"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:singleSelection="false"
+                app:singleLine="false"
+                app:chipSpacing="8dp"
+                android:paddingBottom="12dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/bs_btnMenos"
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                    android:layout_width="56dp"
+                    android:layout_height="56dp"
+                    android:text="-"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/bs_tvQuantidade"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="0"
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/bs_btnMais"
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                    android:layout_width="56dp"
+                    android:layout_height="56dp"
+                    android:text="+"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/bs_tvTotal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Total: R$ 0,00"
+                    android:paddingStart="12dp"
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingTop="4dp">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/bs_btnCancelar"
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                    android:layout_width="0dp"
+                    android:layout_height="56dp"
+                    android:layout_weight="1"
+                    android:text="Cancelar"
+                    android:layout_marginEnd="8dp"/>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/bs_btnAdicionar"
+                    style="@style/Widget.MaterialComponents.Button"
+                    android:layout_width="0dp"
+                    android:layout_height="56dp"
+                    android:layout_weight="1"
+                    android:text="Adicionar ao Carrinho"
+                    android:enabled="false"
+                    android:layout_marginStart="8dp"/>
+            </LinearLayout>
+
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

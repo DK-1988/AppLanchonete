@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="12dp"
+    android:layout_marginBottom="8dp"
+    android:background="@drawable/item_borda">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/tvNomeItemCarrinho"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nome do Produto"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="@android:color/black"
+            android:layout_alignParentStart="true"
+            android:layout_toStartOf="@id/tvPrecoTotalItemCarrinho"/>
+
+        <TextView
+            android:id="@+id/tvOpcoesItemCarrinho"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="(+Bacon, +Cheddar)"
+            android:textSize="12sp"
+            android:textStyle="italic"
+            android:textColor="@android:color/darker_gray"
+            android:layout_below="@id/tvNomeItemCarrinho"
+            android:layout_alignParentStart="true"
+            android:layout_toStartOf="@id/tvPrecoTotalItemCarrinho"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/tvPrecoTotalItemCarrinho"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="R$ 0,00"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="@color/purple_700"
+            android:layout_alignParentEnd="true"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_alignParentStart="true">
+
+            <Button
+                android:id="@+id/btnDiminuirQtd"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:text="-"
+                style="?android:attr/buttonStyleSmall" />
+
+            <TextView
+                android:id="@+id/tvQuantidadeItem"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="1"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:paddingStart="8dp"
+                android:paddingEnd="8dp"/>
+
+            <Button
+                android:id="@+id/btnAumentarQtd"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:text="+"
+                style="?android:attr/buttonStyleSmall" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tvPrecoUnitarioItem"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="(R$ 0,00 / un)"
+            android:textSize="14sp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"/>
+    </RelativeLayout>
+
+</LinearLayout>

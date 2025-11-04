@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    tools:context=".ImpressaoConfigActivity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Configurar Impressora Bluetooth"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="24dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Impressora Selecionada:"
+        android:textSize="16sp"/>
+
+    <TextView
+        android:id="@+id/tvImpressoraSelecionada"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Nenhuma impressora selecionada"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:padding="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="24dp"
+        android:background="#EEEEEE"/>
+
+    <Button
+        android:id="@+id/btnSelecionarImpressora"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Selecionar Impressora Bluetooth Pareada"
+        android:padding="12dp"
+        android:textSize="16sp"/>
+
+</LinearLayout>

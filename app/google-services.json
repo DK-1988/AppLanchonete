@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "14047934913",
+    "project_id": "lanchonete-app-e5446",
+    "storage_bucket": "lanchonete-app-e5446.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:14047934913:android:ad440d0b9c347a6d1f1740",
+        "android_client_info": {
+          "package_name": "com.example.applanchonete"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDGRZ_tynp_rYfH2KX4pi5_OvjobehDddQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:14047934913:android:34d0994e6a200da61f1740",
+        "android_client_info": {
+          "package_name": "com.example.lanchoneteapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDGRZ_tynp_rYfH2KX4pi5_OvjobehDddQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
