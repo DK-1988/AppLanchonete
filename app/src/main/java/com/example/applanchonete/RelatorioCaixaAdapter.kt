@@ -19,6 +19,7 @@ class RelatorioCaixaAdapter(
         val status: TextView = itemView.findViewById(R.id.tvStatusCaixa)
         val usuario: TextView = itemView.findViewById(R.id.tvUsuarioCaixa)
         val total: TextView = itemView.findViewById(R.id.tvTotalVendasCaixa)
+        val valorInicial: TextView = itemView.findViewById(R.id.tvValorInicialCaixa)
         val dinheiro: TextView = itemView.findViewById(R.id.tvDinheiroCaixa)
         val pix: TextView = itemView.findViewById(R.id.tvPixCaixa)
         val credito: TextView = itemView.findViewById(R.id.tvCreditoCaixa)
@@ -43,11 +44,13 @@ class RelatorioCaixaAdapter(
         holder.data.text = dataStr
         holder.status.text = sessao.status
         holder.usuario.text = "Usuário: ${sessao.usuarioEmail}"
-        holder.total.text = fMoeda.format(sessao.valorTotalVendas)
+        holder.valorInicial.text = "Fundo Inicial: ${fMoeda.format(sessao.valorInicial)}"
         holder.dinheiro.text = "Dinheiro: ${fMoeda.format(sessao.totalDinheiro)}"
         holder.pix.text = "PIX: ${fMoeda.format(sessao.totalPix)}"
         holder.credito.text = "Crédito: ${fMoeda.format(sessao.totalCartaoCredito)}"
         holder.debito.text = "Débito: ${fMoeda.format(sessao.totalCartaoDebito)}"
+
+        holder.total.text = fMoeda.format(sessao.valorTotalVendas)
     }
 
     fun atualizarLista(novaLista: List<SessaoCaixa>) {
