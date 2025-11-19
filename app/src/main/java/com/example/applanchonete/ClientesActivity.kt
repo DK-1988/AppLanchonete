@@ -60,7 +60,6 @@ class ClientesActivity : AppCompatActivity() {
                 if (snapshot != null) {
                     val novaLista = mutableListOf<Cliente>()
 
-                    // Itera sobre cada documento retornado
                     for (document in snapshot.documents) {
                         val cliente = document.toObject(Cliente::class.java)
                         if (cliente != null) {

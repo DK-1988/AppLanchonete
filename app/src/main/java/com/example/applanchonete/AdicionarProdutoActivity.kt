@@ -14,17 +14,13 @@ import android.widget.Toast
 import com.google.android.material.textfield.TextInputEditText
 import com.google.firebase.firestore.FirebaseFirestore
 import java.util.Locale
-
-// --- ESTA É A LINHA QUE FALTAVA ---
-import androidx.appcompat.app.AlertDialog // Importa o AlertDialog
+import androidx.appcompat.app.AlertDialog
 
 class AdicionarProdutoActivity : AppCompatActivity() {
 
     private val TAG = "AddProdutoActivity"
     private lateinit var db: FirebaseFirestore
     private var produtoId: String? = null
-
-    // --- Componentes de UI ---
     private lateinit var etNomeProduto: TextInputEditText
     private lateinit var etPrecoCusto: TextInputEditText
     private lateinit var etMargemLucro: TextInputEditText
@@ -35,14 +31,10 @@ class AdicionarProdutoActivity : AppCompatActivity() {
     private lateinit var spinnerSetor: Spinner
     private lateinit var tvModificadoresSelecionados: TextView
     private lateinit var btnSelecionarModificadores: Button
-
-    // --- Lógica de Listas ---
     private lateinit var spinnerAdapter: ArrayAdapter<String>
     private val nomesSetores = mutableListOf<String>()
     private val listaTodosModificadores = mutableListOf<ModificadorGrupo>()
     private val listaModificadoresSelecionadosIds = mutableListOf<String>()
-
-    // --- Lógica de Cálculo Automático ---
     private var isCalculating = false
     private var campoEmFoco: View? = null
 
@@ -60,7 +52,7 @@ class AdicionarProdutoActivity : AppCompatActivity() {
             mostrarDialogoModificadores()
         }
 
-        carregarDadosExternos() // Carrega Setores e Modificadores
+        carregarDadosExternos()
 
         btnSalvarProduto.setOnClickListener {
             validarECadastrarProduto()
@@ -86,10 +78,6 @@ class AdicionarProdutoActivity : AppCompatActivity() {
         spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         spinnerSetor.adapter = spinnerAdapter
     }
-
-    // --- ======================================================= ---
-    // --- LÓGICA DE CÁLCULO AUTOMÁTICO ---
-    // --- ======================================================= ---
 
     private fun configurarListenersDeCalculo() {
         val focusListener = View.OnFocusChangeListener { view, hasFocus ->
@@ -161,10 +149,6 @@ class AdicionarProdutoActivity : AppCompatActivity() {
         isCalculating = false
     }
 
-    // --- ======================================================= ---
-    // --- Lógica de Carregamento ---
-    // --- ======================================================= ---
-
     private fun carregarDadosExternos() {
         db.collection("setores").orderBy("nome").get()
             .addOnSuccessListener { snapshotSetores ->
@@ -232,7 +216,6 @@ class AdicionarProdutoActivity : AppCompatActivity() {
         }
     }
 
-    // --- ESTA É A FUNÇÃO QUE DAVA ERRO (Linha 281) ---
     private fun mostrarDialogoModificadores() {
         if (listaTodosModificadores.isEmpty()) {
             Toast.makeText(this, "Nenhum grupo de modificador cadastrado.", Toast.LENGTH_SHORT).show()
@@ -247,10 +230,8 @@ class AdicionarProdutoActivity : AppCompatActivity() {
         val novosIdsSelecionados = mutableListOf<String>()
         novosIdsSelecionados.addAll(listaModificadoresSelecionadosIds)
 
-        // O import 'androidx.appcompat.app.AlertDialog' corrige o erro aqui
         AlertDialog.Builder(this)
             .setTitle("Selecionar Grupos")
-            // LINHA 283 (Corrigida)
             .setMultiChoiceItems(nomesArray, checkedArray) { dialog, which, isChecked ->
                 val idSelecionado = listaTodosModificadores[which].id
                 if (isChecked) {
@@ -259,12 +240,10 @@ class AdicionarProdutoActivity : AppCompatActivity() {
                     novosIdsSelecionados.remove(idSelecionado)
                 }
             }
-            // LINHA 287 (Corrigida)
             .setPositiveButton("OK") { dialog, _ ->
                 listaModificadoresSelecionadosIds.clear()
                 listaModificadoresSelecionadosIds.addAll(novosIdsSelecionados)
                 atualizarTextoModificadores()
-                // LINHA 289 (Corrigida)
                 dialog.dismiss()
             }
             .setNegativeButton("Cancelar", null)

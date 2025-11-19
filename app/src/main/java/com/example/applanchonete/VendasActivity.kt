@@ -162,8 +162,6 @@ class VendasActivity : AppCompatActivity(),
     }
 
     private fun setupActivityResultLaunchers() {
-        // --- ESTA É A CORREÇÃO ---
-        // A lógica foi re-adicionada
         pagamentoLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
             if (result.resultCode == Activity.RESULT_OK) {
                 val data = result.data
@@ -173,12 +171,10 @@ class VendasActivity : AppCompatActivity(),
                 if (listaPagamentos.isNullOrEmpty()) {
                     Toast.makeText(this, "Erro ao processar pagamento.", Toast.LENGTH_SHORT).show()
                 } else {
-                    // Chama a função que processa a venda
                     verificarPermissaoEProcessar(listaPagamentos)
                 }
             }
         }
-        // --- FIM DA CORREÇÃO ---
 
         selecionarClienteLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
             if (result.resultCode == Activity.RESULT_OK) {

@@ -170,7 +170,7 @@ class VendasViewModelRefatorado(application: Application) : AndroidViewModel(app
                 val totalCusto = itensSnapshot.sumOf { it.precoCustoUnitario * it.quantidade }
                 val lucroTotal = totalVenda - totalCusto
 
-                var venda = Venda( // CORRIGIDO: val -> var
+                var venda = Venda(
                     itens = itensSnapshot,
                     totalVenda = totalVenda,
                     pagamentos = listaPagamentos,
@@ -184,17 +184,39 @@ class VendasViewModelRefatorado(application: Application) : AndroidViewModel(app
 
                 _progressoTexto.value = "Salvando venda..."
                 val docRef = db.collection("vendas").add(venda).await()
-                venda.id = docRef.id // Agora é válido
+                venda.id = docRef.id
                 Log.d(TAG, "Venda salva com ID: ${venda.id}")
 
                 if (sessaoCaixaId.isNotBlank()) {
                     try {
+                        var somaDinheiro = 0.0
+                        var somaCredito = 0.0
+                        var somaDebito = 0.0
+                        var somaPix = 0.0
+
+                        venda.pagamentos.forEach { p ->
+                            when (p.forma) {
+                                "Dinheiro" -> somaDinheiro += p.valor
+                                "Cartão de Crédito" -> somaCredito += p.valor
+                                "Cartão de Débito" -> somaDebito += p.valor
+                                "PIX" -> somaPix += p.valor
+                            }
+                        }
+
                         db.collection("sessoes_caixa")
                             .document(sessaoCaixaId)
-                            .update("valorTotalVendas", FieldValue.increment(venda.totalVenda))
+                            .update(
+                                mapOf(
+                                    "valorTotalVendas" to FieldValue.increment(venda.totalVenda),
+                                    "totalDinheiro" to FieldValue.increment(somaDinheiro),
+                                    "totalCartaoCredito" to FieldValue.increment(somaCredito),
+                                    "totalCartaoDebito" to FieldValue.increment(somaDebito),
+                                    "totalPix" to FieldValue.increment(somaPix)
+                                )
+                            )
                             .await()
                     } catch (e: Exception) {
-                        Log.w(TAG, "Falha ao incrementar valorTotalVendas: ${e.message}", e)
+                        Log.w(TAG, "Falha ao atualizar totais da sessão: ${e.message}", e)
                     }
                 }
 

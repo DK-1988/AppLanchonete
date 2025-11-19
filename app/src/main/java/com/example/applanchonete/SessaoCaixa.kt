@@ -15,5 +15,10 @@ data class SessaoCaixa(
     val valorInicial: Double = 0.0,
     var valorTotalVendas: Double = 0.0,
     var valorFinalCalculado: Double = 0.0,
-    var status: String = "Aberto"
+    var status: String = "Aberto",
+
+    var totalDinheiro: Double = 0.0,
+    var totalCartaoCredito: Double = 0.0,
+    var totalCartaoDebito: Double = 0.0,
+    var totalPix: Double = 0.0
 )

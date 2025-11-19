@@ -10,7 +10,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 
 class AdicionarSetorActivity : AppCompatActivity() {
     private lateinit var db: FirebaseFirestore
-    private var setorId: String? = null // Guarda o ID no modo "Editar"
+    private var setorId: String? = null
     private lateinit var tvTitulo: TextView
     private lateinit var etNomeSetor: TextInputEditText
     private lateinit var btnSalvar: Button
@@ -60,7 +60,7 @@ class AdicionarSetorActivity : AppCompatActivity() {
             return
         }
         val setor = Setor(
-            id = setorId ?: "", // Usa o ID existente ou "" se for novo
+            id = setorId ?: "",
             nome = nome
         )
         if (setorId == null) {

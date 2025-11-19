@@ -1,51 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:gravity="center"
     android:padding="16dp"
+    android:gravity="center"
     tools:context=".MainActivity">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Lanchonete App"
-        android:textSize="28sp"
+        android:text="Menu Principal"
+        android:textSize="24sp"
         android:textStyle="bold"
-        android:layout_marginBottom="48dp"/>
-
-    <Button
-    android:id="@+id/btnCadastro"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:text="Cadastro"
-    android:layout_marginBottom="16dp"
-    android:textSize="18sp"/>
+        android:layout_marginBottom="32dp"/>
 
     <Button
         android:id="@+id/btnPontoDeVendas"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Ponto de Vendas"
-        android:layout_marginBottom="16dp"
-        android:textSize="18sp"/>
+        android:layout_marginBottom="16dp"/>
+
+    <Button
+        android:id="@+id/btnCadastro"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Cadastros"
+        android:layout_marginBottom="16dp"/>
 
     <Button
         android:id="@+id/btnRelatorios"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Relatórios"
-        android:textSize="18sp"
         android:layout_marginBottom="16dp"/>
 
     <Button
-    android:id="@+id/btnConfiguracoes"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:text="Configurações"
-    android:textSize="18sp"/>
+        android:id="@+id/btnConfiguracoes"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Configurações"
+        android:layout_marginBottom="32dp"/>
+
+    <Button
+        android:id="@+id/btnSair"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Sair (Logout)"
+        android:backgroundTint="@android:color/holo_red_dark"
+        android:textColor="@android:color/white"/>
 
 </LinearLayout>

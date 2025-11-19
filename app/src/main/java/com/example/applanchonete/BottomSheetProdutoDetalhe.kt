@@ -61,8 +61,6 @@ class BottomSheetProdutoDetalhe(
         tvTotal = root.findViewById(R.id.bs_tvTotal)
         val btnCancelar = root.findViewById<com.google.android.material.button.MaterialButton>(R.id.bs_btnCancelar)
         btnAdicionar = root.findViewById(R.id.bs_btnAdicionar)
-
-        // IDs dos Títulos (Labels) do seu XML
         val lblIngredientes = root.findViewById<TextView>(R.id.bs_lbl_ingredientes)
         val lblMolhos = root.findViewById<TextView>(R.id.bs_lbl_molhos)
         val lblExtras = root.findViewById<TextView>(R.id.bs_lbl_extras)

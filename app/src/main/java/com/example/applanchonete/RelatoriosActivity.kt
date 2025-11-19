@@ -322,14 +322,12 @@ class RelatoriosActivity : AppCompatActivity() {
         val builder = StringBuilder()
         val separador = ";"
 
-        // --- MUDANÇA AQUI ---
         builder.appendLine("Data${separador}ID Venda${separador}Cliente${separador}Total Vendido${separador}Total Custo${separador}Lucro${separador}Pagamentos${separador}ID Caixa")
 
         val sdfCsv = SimpleDateFormat("dd/MM/yyyy HH:mm", Locale.getDefault())
         lista.forEach { venda ->
             val data = sdfCsv.format(venda.dataHora?.toDate() ?: Date())
 
-            // Formata a lista de pagamentos
             val pagamentosStr = venda.pagamentos.joinToString(", ") {
                 "${it.forma} (${formatoMoeda.format(it.valor)})"
             }.replace(";", ",")
@@ -367,7 +365,8 @@ class RelatoriosActivity : AppCompatActivity() {
         val builder = StringBuilder()
         val separador = ";"
         val sdfCsv = SimpleDateFormat("dd/MM/yyyy HH:mm", Locale.getDefault())
-        builder.appendLine("Status${separador}Usuário${separador}Data Abertura${separador}Data Fechamento${separador}Valor Inicial${separador}Total Vendido${separador}Valor Final")
+
+        builder.appendLine("Status${separador}Usuario${separador}Abertura${separador}Fechamento${separador}Vlr Inicial${separador}Dinheiro${separador}PIX${separador}Credito${separador}Debito${separador}Total Vendas")
 
         lista.forEach { sessao ->
             val dataAbertura = sdfCsv.format(sessao.dataAbertura?.toDate() ?: Date())
@@ -379,8 +378,11 @@ class RelatoriosActivity : AppCompatActivity() {
                         "${dataAbertura}${separador}" +
                         "${dataFechamento}${separador}" +
                         "${sessao.valorInicial}${separador}" +
-                        "${sessao.valorTotalVendas}${separador}" +
-                        sessao.valorFinalCalculado
+                        "${sessao.totalDinheiro}${separador}" +
+                        "${sessao.totalPix}${separador}" +
+                        "${sessao.totalCartaoCredito}${separador}" +
+                        "${sessao.totalCartaoDebito}${separador}" +
+                        sessao.valorTotalVendas
             )
         }
         return builder.toString()

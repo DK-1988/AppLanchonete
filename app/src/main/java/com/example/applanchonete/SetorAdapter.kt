@@ -67,6 +67,6 @@ class SetorAdapter(
 
     fun atualizarLista(novaLista: List<Setor>) {
         listaSetores = novaLista
-        notifyDataSetChanged() // Avisa a RecyclerView para redesenhar
+        notifyDataSetChanged()
     }
 }

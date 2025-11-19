@@ -17,9 +17,7 @@ class SetorFiltroAdapter(
     }
 
     class SetorFiltroViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        // Vimos o erro 'Unresolved reference. 24'
-        // Esta é a linha 24 (ou próxima dela) que precisa estar correta.
-        val nomeSetor: TextView = itemView.findViewById(R.id.tvNomeSetorFiltro) // <-- VERIFIQUE AQUI
+        val nomeSetor: TextView = itemView.findViewById(R.id.tvNomeSetorFiltro)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SetorFiltroViewHolder {
@@ -35,7 +33,7 @@ class SetorFiltroAdapter(
     override fun onBindViewHolder(holder: SetorFiltroViewHolder, position: Int) {
         val setor = listaSetores[position]
 
-        holder.nomeSetor.text = setor.nome // <-- VERIFIQUE AQUI (deve ser 'nomeSetor')
+        holder.nomeSetor.text = setor.nome
 
         holder.itemView.setOnClickListener {
             listener.onSetorFiltroClicked(setor.nome)
@@ -44,7 +42,6 @@ class SetorFiltroAdapter(
 
     fun atualizarLista(novaLista: List<Setor>) {
         listaSetores = novaLista
-        // (O aviso sobre notifyDataSetChanged. 56 é aqui. Pode ignorar.)
         notifyDataSetChanged()
     }
 }
