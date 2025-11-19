@@ -119,7 +119,9 @@ class VendasActivity : AppCompatActivity(),
         configurarBotoes()
 
         startListeningSetores()
-        startListeningProdutos()
+
+        carregarProdutosDoFirebase()
+
         startListeningModificadores()
 
         lifecycleScope.launch(Dispatchers.IO) {
@@ -167,7 +169,6 @@ class VendasActivity : AppCompatActivity(),
                 val data = result.data
                 @Suppress("UNCHECKED_CAST", "DEPRECATION")
                 val listaPagamentos = data?.getSerializableExtra("LISTA_PAGAMENTOS") as? ArrayList<Pagamento>
-
                 if (listaPagamentos.isNullOrEmpty()) {
                     Toast.makeText(this, "Erro ao processar pagamento.", Toast.LENGTH_SHORT).show()
                 } else {
@@ -209,13 +210,16 @@ class VendasActivity : AppCompatActivity(),
                 }
                 launch {
                     vendasViewModel.sucesso.collectLatest {
-                        esconderProgresso()
-                        Toast.makeText(this@VendasActivity, "Venda finalizada com sucesso!", Toast.LENGTH_LONG).show()
+                        runOnUiThread {
+                            esconderProgresso()
+                            Toast.makeText(this@VendasActivity, "Venda finalizada com sucesso!", Toast.LENGTH_LONG).show()
 
-                        clienteIdSelecionado = ""
-                        clienteNomeSelecionado = "Cliente Padrão"
-                        tvClienteSelecionado.text = clienteNomeSelecionado
-                        // O carrinho será limpo pelo ViewModel (chamando 'limparCarrinho()')
+                            clienteIdSelecionado = ""
+                            clienteNomeSelecionado = "Cliente Padrão"
+                            tvClienteSelecionado.text = clienteNomeSelecionado
+
+                            carregarProdutosDoFirebase()
+                        }
                     }
                 }
                 launch {
@@ -227,7 +231,8 @@ class VendasActivity : AppCompatActivity(),
                     vendasViewModel.carrinhoUiState.collectLatest { state ->
                         val f = NumberFormat.getCurrencyInstance(Locale("pt", "BR"))
                         tvTotalVenda.text = "Total: ${f.format(state.total)}"
-                        carrinhoAdapter.atualizarLista(state.itens)
+                        // O adapter do carrinho recebe uma cópia nova
+                        carrinhoAdapter.atualizarLista(state.itens.toList())
                     }
                 }
             }
@@ -291,27 +296,24 @@ class VendasActivity : AppCompatActivity(),
             }
     }
 
-    private fun startListeningProdutos() {
-        produtosListener?.remove()
-        produtosListener = db.collection("produtos").orderBy("nome")
-            .addSnapshotListener { snapshot, error ->
-                if (error != null) { Log.e(TAG, "Erro listener produtos: ${error.message}", error); return@addSnapshotListener }
-                if (snapshot == null) return@addSnapshotListener
+    private fun carregarProdutosDoFirebase() {
+        lifecycleScope.launch(Dispatchers.IO) {
+            try {
+                val snapshot = db.collection("produtos").orderBy("nome").get().await()
+                val produtos = snapshot.documents.mapNotNull { doc ->
+                    doc.toObject(Produto::class.java)?.apply { id = doc.id }
+                }
 
-                lifecycleScope.launch {
-                    val produtos = withContext(Dispatchers.Default) {
-                        snapshot.documents.mapNotNull { doc ->
-                            doc.toObject(Produto::class.java)?.apply { id = doc.id }
-                        }
-                    }
+                withContext(Dispatchers.Main) {
                     listaMestraProdutos.clear()
                     listaMestraProdutos.addAll(produtos)
 
-                    listaProdutosFiltrados.clear()
-                    listaProdutosFiltrados.addAll(listaMestraProdutos)
-                    produtosAdapter.atualizarLista(listaProdutosFiltrados)
+                    onSetorFiltroClicked("Todos")
                 }
+            } catch (e: Exception) {
+                Log.e(TAG, "Erro ao carregar produtos: ${e.message}")
             }
+        }
     }
 
     private fun startListeningModificadores() {
@@ -337,7 +339,9 @@ class VendasActivity : AppCompatActivity(),
         listaProdutosFiltrados.clear()
         if (nomeSetor == "Todos") listaProdutosFiltrados.addAll(listaMestraProdutos)
         else listaProdutosFiltrados.addAll(listaMestraProdutos.filter { it.setor == nomeSetor })
-        produtosAdapter.atualizarLista(listaProdutosFiltrados)
+
+        // CORREÇÃO AQUI: Envia uma cópia nova da lista para forçar a atualização visual
+        produtosAdapter.atualizarLista(listaProdutosFiltrados.toList())
     }
 
     override fun onProdutoClicked(produto: Produto) {

@@ -113,12 +113,12 @@ class PagamentoActivity : AppCompatActivity(), PagamentoAdapter.OnPagamentoRemov
             tvRestante.text = formatoMoeda.format(restante)
             tvRestante.setTextColor(Color.parseColor("#AA0000"))
             btnFinalizarVenda.isEnabled = false
-            etValorPagamento.hint = "Faltam ${formatoMoeda.format(restante)}"
+            //etValorPagamento.hint = "Faltam ${formatoMoeda.format(restante)}"
         } else {
             tvRestante.text = "Troco: ${formatoMoeda.format(restante * -1)}"
             tvRestante.setTextColor(Color.parseColor("#008800"))
             btnFinalizarVenda.isEnabled = true
-            etValorPagamento.hint = "Valor a pagar"
+            //etValorPagamento.hint = "Valor a pagar"
         }
     }
 
